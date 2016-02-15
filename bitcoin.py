@@ -35,10 +35,10 @@ def computeSimilarity(a, b):
     std_a = np.std(a)
     std_b = np.std(b)
     total = 0
-    for z in range(len(a)):
+    for z in range(len(a) - 1):
         total += (a[z] - mean_a) * (b[z] - mean_b)
 
-    return total/(len(a) * std_a * std_b)
+    return total/((len(a) - 1) * std_a * std_b)
 
 def computeDelta(wt, X, Xi):
     """
