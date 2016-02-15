@@ -141,7 +141,9 @@ for i in xrange(0,len(train1_360.index)) :
 
 # Actual deltaP values for test data.
 # YOUR CODE HERE (use the right variable names so the below code works)
-
+testDeltaP = np.empty(0)
+testDeltaP = np.asarray(test_360[['Yi']])
+testDeltaP = np.reshape(testDeltaP, -1)
 
 
 # Combine all the test data
@@ -150,7 +152,6 @@ d = {'deltaP': testDeltaP,
      'deltaP180': testDeltaP180,
      'deltaP360': testDeltaP360}
 testData = pd.DataFrame(d)
-
 
 # Predict price variation on the test data set.
 result = model.predict(testData)
@@ -163,5 +164,6 @@ compareDF = pd.DataFrame(compare)
 # HINT: consider using the sm.mean_squared_error function
 MSE = 0.0
 # YOUR CODE HERE
+MSE = sm.mean_squared_error(testDeltaP, result)
 print "The MSE is %f" % (MSE)
 
